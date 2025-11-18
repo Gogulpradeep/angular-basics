@@ -1,16 +1,48 @@
-<h1>{{name}}</h1>
-<input type="text" [(ngModel)]="name">
-<img [src]="imageUrl" alt="">
+<h1>{{ name }}</h1>
+<input type="text" [(ngModel)]="name" />
+<img [src]="imageUrl" alt="" />
 <h1 [innerText]="text"></h1>
 <h1 [textContent]="user?.name"></h1>
 
-<p>Count {{clicklist}}</p>
+<p>Count {{ clicklist }}</p>
 <button (click)="clickMe()">ClickMe</button>
-    <p> {{count()}}</p>
-    <p>{{doublecount()}}</p>
-    <button (click)="increment()">click me</button>
+<p>{{ count() }}</p>
+<p>{{ doublecount() }}</p>
+<button (click)="increment()">click me</button>
 
-    <h1> anime list</h1>
-    <li *ngFor="let anime of  animes">{{anime}}
+<h1>anime list</h1>
+<li *ngFor="let anime of animes">{{ anime }}</li>
 
-    </li>
+<h1>ngfor variable</h1>
+<li *ngFor="let fruit of fruits; let i = index">{{ i + 1 }} {{ fruit }}</li>
+
+<h1>First and Last variable</h1>
+<li *ngFor="let fruit of fruits; let i = index; let isFirst = first; let isLast = last">
+  <strong *ngIf="isFirst">First:</strong>
+  <strong *ngIf="isLast">last:</strong>
+  {{ fruit }}
+</li>
+<h1>first odd and even values</h1>
+<li *ngFor="let fruit of fruits; let isEven = even" [ngClass]="{ 'even-item': isEven }">
+  {{ fruit }}
+</li>
+
+<li *ngFor="let fruit of fruits; let isOdd =odd"
+[ngClass]="{'odd-item': isOdd}" >{{fruit}}</li>
+
+<input type="checkbox" [(ngModel)]="showMe">
+<h1  *ngIf="showMe">can you see me?</h1>
+
+<input type="checkbox" [(ngModel)]="applyColor">
+<h1 [ngClass]="{'primary':applyColor}">Sample Text</h1>
+
+<p>{{toDate}}</p>
+<p>{{toDate| date}}</p>
+
+<p>{{pal}}</p>
+<p>{{pal|slice:0:7}}</p>
+
+<div>
+  <app-form></app-form>
+  <app-list></app-list>
+</div>
